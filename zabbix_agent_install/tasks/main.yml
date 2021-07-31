@@ -35,3 +35,9 @@
   apt:
           name: '{{ zabbix_agent_install_agent }}'
           state: present
+
+- name: Enable '{{ zabbix_agent_install_agent }}'.service
+  apt:
+          name: '{{ zabbix_agent_install_agent }}'
+          state: enabled
+
