@@ -1,0 +1,6 @@
+---
+# handlers file for clear_journalctl_cron
+- name: restart cron
+  systemd:
+          name: cron
+          state: restarted

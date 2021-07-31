@@ -1,0 +1,16 @@
+---
+# tasks file for clear_journalctl_cron
+
+# Add Clear journald, At 00:00 on Monday
+- cron:
+        name: "journalctl --vacuum-time=30d"
+        minute: 0
+        hour: 0
+        weekday: 1
+        user: root
+        job: "{{ clear_journalctl_cron_command }}"
+        state: present
+
+# systemd restart cron < handlers
+  notify:
+          - restart cron

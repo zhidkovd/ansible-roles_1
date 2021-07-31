@@ -1,0 +1,8 @@
+---
+- name: Job Roles
+  hosts: ubuntu
+  become: yes
+  vars_files:
+          "./vars/vars.yml"
+  roles:
+          - add_scripts_cron

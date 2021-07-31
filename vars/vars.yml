@@ -1,0 +1,12 @@
+#
+# Global variables for ROLES
+clear_journalctl_cron_command: journalctl --vacuum-time=30d
+ssh_tcp_port: 22
+add_scripts_cron_src_path: /etc/ansible/roles/files
+add_scripts_cron_dest_path: /var/scripts
+add_scripts_cron_name_script: script.sh
+add_scripts_cron_time_minute: 0
+add_scripts_cron_time_hour: 0
+add_scripts_cron_time_month_day: 
+add_scripts_cron_time_weekday: 1
+add_scripts_cron_time_month: 

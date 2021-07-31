@@ -1,0 +1,24 @@
+---
+# tasks file for aptpkg
+
+- name: Update apt-get repo and cache
+  apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
+
+- name: Upgrade all apt packages
+  apt: upgrade=dist force_apt_get=yes
+
+- name: Install PKG, update and upgrade
+  apt:
+          name: '{{ item }}'
+          state: present
+  with_items:
+          - ssh
+          - fail2ban
+          - nload
+          - iperf
+          - ncdu
+          - vnstat
+          - nethogs
+          - tcpdump
+
+

@@ -1,0 +1,22 @@
+---
+# tasks file for ssh-ufw
+
+# Change line #Port 22 > Rort 2
+# ssh_tcp_port < vars/vars.yml (global variables)
+- name: Change line file sshd_config -- /etc/ssh/sshd_config, Port 
+  lineinfile:
+          path: /etc/ssh/sshd_config
+          regexp: '^#Port'
+          line: 'Port {{ ssh_tcp_port }}'
+          backrefs: yes
+
+# Change line PubkeyAuthentication on > PubkeyAuthentication yes         
+- name: Change line file sshd_config -- /etc/ssh/sshd_config, PubkeyAuthentication
+  lineinfile:
+          path: /etc/ssh/sshd_config
+          regexp: 'PubkeyAuthentication'
+          line: 'PubkeyAuthentication yes'         
+          backrefs: yes
+# systemd restart sshd < handlers          
+  notify:
+          - sshd restart

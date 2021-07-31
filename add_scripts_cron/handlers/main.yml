@@ -1,0 +1,6 @@
+---
+# handlers file for add_scripts_cron
+- name: restart cron
+  systemd:
+          name: cron
+          state: restarted

@@ -1,0 +1,51 @@
+---
+# tasks file for add_scripts_cron
+
+# Copy file script local machine to remote host
+# scripts store files/<name>.sh
+
+- name: Checking for the presence of a directory
+  stat:
+          path: /var/scripts
+  register: dest_directory
+
+- name: Create a directory if it doesn't exist
+  file:
+          path: /var/scripts
+          state: directory
+  when: not dest_directory.stat.exists
+
+- name: Checking for a script
+  stat:
+          path: '{{ add_scripts_cron_dest_path }}/{{ add_scripts_cron_name_script }}'
+  register: dest_file_script
+
+- name: Deleting the script file if it exists
+  file:
+          path: '{{ add_scripts_cron_dest_path }}/{{ add_scripts_cron_name_script }}'
+          state: absent
+  when: dest_file_script.stat.exists
+
+- name: Copy script to remote host
+  copy:
+          src: '{{ add_scripts_cron_src_path }}/{{ add_scripts_cron_name_script }}'
+          dest: '{{ add_scripts_cron_dest_path }}/{{ add_scripts_cron_name_script }}'
+          owner: root
+          group: root
+          mode: u+x,g+x,o+x
+
+# Add script in cron
+
+- cron:
+        name: "add script"
+        minute: "{{ add_scripts_cron_time_minute }}"
+        hour: "{{ add_scripts_cron_time_hour }}"
+#        day: "{{ add_scripts_cron_time_month_day }}"
+        weekday: "{{ add_scripts_cron_time_weekday }}"
+#        month: "{{ add_scripts_cron_time_month }}"
+        user: root
+        job: '{{ add_scripts_cron_dest_path }}/{{ add_scripts_cron_name_script }}'
+        state: present
+
+  notify:
+          - restart cron 
