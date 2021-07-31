@@ -1,15 +1,27 @@
 #
 # Global variables for ROLES
+#
+# Команда для добавления в crontab, которая выполняется в 00:00 по понедельникам
 clear_journalctl_cron_command: journalctl --vacuum-time=30d
+
+# Общий порт SSH, действующий для всех ролей, где указан и требуется
 ssh_tcp_port: 22
-add_scripts_cron_src_path: /etc/ansible/roles/files
-add_scripts_cron_dest_path: /var/scripts
-add_scripts_cron_name_script: script.sh
-add_scripts_cron_time_minute: 0
+
+# Параметры для копирования скрипта и добавления в crontab
+add_scripts_cron_src_path: /etc/ansible/roles/files # Откуда брать скрипт с локального хоста
+add_scripts_cron_dest_path: /usr/local/scripts # Куда ложить скрипт на удаленном хосте
+add_scripts_cron_name_script: script.sh # название скрипта
+# Указание времени, когда нужно, чтобы выполнялся скрипт, если нужен параметр *, то оставить пустым
+# Также, те переменные которые остаются пустыми, нужно закомментировать в роли add_scripts_cron/tasks/main.uml
+add_scripts_cron_time_minute: 0 
 add_scripts_cron_time_hour: 0
 add_scripts_cron_time_month_day: 
 add_scripts_cron_time_weekday: 1
 add_scripts_cron_time_month:
-zabbix-agent_install_url_deb: https://repo.zabbix.com/zabbix/4.4/debian/pool/main/z/zabbix-release/zabbix-release_4.4-1+buster_all.deb
-zabbix-agent_install_dest_path_deb: /tmp/zabbix-release_4.4-1+buster_all.deb
-zabbix-agent_install_agent: zabbix-agent
+
+# Параметры для установки пакета с интернета "deb" и его установка
+zabbix_agent_install_url_deb: https://repo.zabbix.com/zabbix/4.4/debian/pool/main/z/zabbix-release/zabbix-release_4.4-1+buster_all.deb
+# Путь к deb файлу
+zabbix_agent_install_file_deb: /tmp/zabbix-release_4.4-1+buster_all.deb
+# Название пакета
+zabbix_agent_install_agent: zabbix-agent

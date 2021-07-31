@@ -10,28 +10,28 @@
 
 - name: Checking for a deb file
   stat:
-          path: "{{ zabbix-agent_install_file_deb }}"
+          path: "{{ zabbix_agent_install_file_deb }}"
   register: deb_file
 
 - name: Deleting a deb file if it exists
   file:
-          path: "{{ zabbix-agent_install_file_deb }}"
+          path: "{{ zabbix_agent_install_file_deb }}"
           state: absent
   when: deb_file.stat.exists
 
 - name: Deb file download
   get_url:
-          url: "{{ zabbix-agent_install_url_deb }}"
-          dest: "{{ zabbix-agent_install_file_deb }}"
+          url: "{{ zabbix_agent_install_url_deb }}"
+          dest: "{{ zabbix_agent_install_file_deb }}"
 
-- name: dpkg -i "{{ zabbix-agent_install_file_deb }}"
+- name: dpkg -i "{{ zabbix_agent_install_file_deb }}"
   apt:
-          deb: "{{ zabbix-agent_install_file_deb }}"
+          deb: "{{ zabbix_agent_install_file_deb }}"
 
 - name: Update apt-get repo
   apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
 
-- name: Install PKG, "{{ zabbix-agent_install_agent }}"
+- name: Install PKG, '{{ zabbix_agent_install_agent }}'
   apt:
-          name: "{{ zabbix-agent_install_agent }}"
-          present: present
+          name: '{{ zabbix_agent_install_agent }}'
+          state: present
