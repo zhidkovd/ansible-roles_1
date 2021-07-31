@@ -9,4 +9,7 @@ add_scripts_cron_time_minute: 0
 add_scripts_cron_time_hour: 0
 add_scripts_cron_time_month_day: 
 add_scripts_cron_time_weekday: 1
-add_scripts_cron_time_month: 
+add_scripts_cron_time_month:
+zabbix-agent_install_url_deb: https://repo.zabbix.com/zabbix/4.4/debian/pool/main/z/zabbix-release/zabbix-release_4.4-1+buster_all.deb
+zabbix-agent_install_dest_path_deb: /tmp/zabbix-release_4.4-1+buster_all.deb
+zabbix-agent_install_agent: zabbix-agent

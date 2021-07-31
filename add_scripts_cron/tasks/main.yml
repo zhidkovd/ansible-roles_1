@@ -6,12 +6,12 @@
 
 - name: Checking for the presence of a directory
   stat:
-          path: /var/scripts
+          path: '{{ add_scripts_cron_dest_path }}/{{ add_scripts_cron_name_script }}' 
   register: dest_directory
 
 - name: Create a directory if it doesn't exist
   file:
-          path: /var/scripts
+          path: '{{ add_scripts_cron_dest_path }}/{{ add_scripts_cron_name_script }}'
           state: directory
   when: not dest_directory.stat.exists
 

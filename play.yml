@@ -5,4 +5,4 @@
   vars_files:
           "./vars/vars.yml"
   roles:
-          - add_scripts_cron
+          - zabbix-agent_install
