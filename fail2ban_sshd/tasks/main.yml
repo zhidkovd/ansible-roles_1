@@ -1,0 +1,22 @@
+---
+# tasks file for fail2ban_sshd
+- name: Copy /etc/fail2ban.conf > /etc/fail2ban.local
+  copy:
+          remote_src: True
+          src: /etc/fail2ban/fail2ban.conf
+          dest: /etc/fail2ban/fail2ban.local
+
+- name: Change to file /etc/fail2ban/fail2ban.local1
+  lineinfile:
+          dest: /etc/fail2ban/fail2ban.local
+          line: '{{ item }}'
+  with_items:
+          - '[sshd]'
+          - 'port = ssh'
+          - 'enabled = true'
+          - 'bantime = 600'
+          - 'findtime = 3600'
+          - 'maxretry = 5'
+
+  notify:
+          - restart fail2ban

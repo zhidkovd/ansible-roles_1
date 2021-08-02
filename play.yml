@@ -8,6 +8,7 @@
           - aptpkg
           - ssh_change_config
           - ufw_allow_ports
-          - clear_journalctl_cron 
-          - add_scripts_cron
+          - clear_journalctl_cron
+          - fail2ban_sshd
           - zabbix_agent_install
+          - add_scripts_cron

@@ -12,13 +12,4 @@
           name: '{{ item }}'
           state: present
   with_items:
-          - ssh
-          - fail2ban
-          - nload
-          - iperf
-          - ncdu
-          - vnstat
-          - nethogs
-          - tcpdump
-
-
+          - "{{ aptpkg_name_packages }}"

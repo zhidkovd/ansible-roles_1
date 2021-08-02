@@ -1,12 +1,21 @@
 #
 # Global variables for ROLES
 #
+aptpkg_name_packages:
+        - fail2ban
+        - nload
+        - iperf
+        - ncdu
+        - vnstat
+        - nethogs
+        - tcpdump
+#
 # Команда для добавления в crontab, которая выполняется в 00:00 по понедельникам
 clear_journalctl_cron_command: journalctl --vacuum-time=30d
-
+#
 # Общий порт SSH, действующий для всех ролей, где указан и требуется
 ssh_tcp_port: 22
-
+#
 # Параметры для копирования скрипта и добавления в crontab
 add_scripts_cron_src_path: /etc/ansible/roles/files # Откуда брать скрипт с локального хоста
 add_scripts_cron_dest_path: /usr/local/scripts # Куда ложить скрипт на удаленном хосте
@@ -18,7 +27,7 @@ add_scripts_cron_time_hour: 0
 add_scripts_cron_time_month_day: 
 add_scripts_cron_time_weekday: 1
 add_scripts_cron_time_month:
-
+#
 # Параметры для установки пакета с интернета "deb" и его установка
 zabbix_agent_install_url_deb: https://repo.zabbix.com/zabbix/4.4/debian/pool/main/z/zabbix-release/zabbix-release_4.4-1+buster_all.deb
 # Путь к deb файлу

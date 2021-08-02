@@ -37,7 +37,6 @@
                     proto: tcp
             with_items:
                     - "{{ ssh_tcp_port }}"
-                    - 37903
                     - 80
                     - 443
                     - 10113
