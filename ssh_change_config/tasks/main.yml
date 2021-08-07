@@ -17,6 +17,14 @@
           regexp: 'PubkeyAuthentication'
           line: 'PubkeyAuthentication yes'         
           backrefs: yes
+
+# Change line PermitRootLogin prohibit-password > PermitRootLogin NO
+- name: Change line file sshd_config -- /etc/ssh/sshd_config, PermitRootLogin 
+  lineinfile:
+          path: /etc/ssh/sshd_config
+          regexp: '^#PermitRootLogin'
+          line: 'PermitRootLogin No'
+          backrefs: yes
 # systemd restart sshd < handlers          
   notify:
           - sshd restart

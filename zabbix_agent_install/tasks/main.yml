@@ -37,7 +37,8 @@
           state: present
 
 - name: Enable '{{ zabbix_agent_install_agent }}'.service
-  apt:
+  systemd:
           name: '{{ zabbix_agent_install_agent }}'
-          state: enabled
+          state: started
+          enabled: yes
 

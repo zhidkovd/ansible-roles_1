@@ -1,6 +1,6 @@
 ---
 - name: Job Roles
-  hosts: ubuntu
+  hosts: client
   become: yes
   vars_files:
           "./vars/vars.yml"

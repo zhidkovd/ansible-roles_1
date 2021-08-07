@@ -14,7 +14,7 @@ aptpkg_name_packages:
 clear_journalctl_cron_command: journalctl --vacuum-time=30d
 #
 # Общий порт SSH, действующий для всех ролей, где указан и требуется
-ssh_tcp_port: 22
+ssh_tcp_port: 23
 #
 # Параметры для копирования скрипта и добавления в crontab
 add_scripts_cron_src_path: /etc/ansible/roles/files # Откуда брать скрипт с локального хоста
