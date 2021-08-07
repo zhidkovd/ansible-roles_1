@@ -19,7 +19,7 @@
           content: "{{ item.key }}"
           dest: "/home/{{ item.name }}/.ssh/authrozied_keys"
   with_items:
-          - { key: "{{ adduser_sshkey_sudoers.username.key[0] }}", name: "{{ adduser_sshkey_sudoers.username.name[0] }}" }
+          - { key: "{{ adduser_sshkey_sudoers.username.key[0] }}", name: "{{ adduser_sshkey_sudoers.username.name[0] }}" } # ключ с регистром 0 соответствует пользователю с регистром 0, то есть koptev
           - { key: "{{ adduser_sshkey_sudoers.username.key[1] }}", name: "{{ adduser_sshkey_sudoers.username.name[1] }}" }
           - { key: "{{ adduser_sshkey_sudoers.username.key[2] }}", name: "{{ adduser_sshkey_sudoers.username.name[2] }}" }
 

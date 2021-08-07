@@ -38,11 +38,11 @@ zabbix_agent_install_agent: zabbix-agent
 adduser_sshkey_sudoers:
         username:
                 name: 
-                - koptev
-                - user2
-                - user3
+                - koptev # этот пользователь относится к регистру 0
+                - user2 # этот пользователь относится к регистру 1
+                - user3 # этот пользователь относится к регистру 2
                 key: 
-                - <key>
-                - <key>
-                - <key>         
+                - <key> # Этот ключ относится к регистру 0
+                - <key> # Этот ключ относится к регистру 1
+                - <key> # Этот ключ относится к регистру 2
         state: present
