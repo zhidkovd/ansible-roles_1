@@ -39,10 +39,10 @@ adduser_sshkey_sudoers:
         username:
                 name: 
                 - koptev
-                - zhidkov1
-                - zhidkov2
+                - user2
+                - user3
                 key: 
-                - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCHknhTuT5v69MLcUhPWAuBDWMtlDjbJoenvXXzgJkJvtHnAJLrF8MJOuYrVbVbCvAmrj+MQWFGpv41YQxnbA/JGjHxktLZ8tWjrFgN4OPyg+AdO+Xv7vMlydL4dgj+y+Qq/TEBfMz2c31SBwMGo5YgQQjjOxXkn6EcGuardPKfe9Z/c6jMpA76nJGLF7+IM2iRIL+Z+J8954xvQ4bC/3cD/eRRbTtME6o4nuPVz51jS0B3qwH1o2UvS/z3q7RvlEyaDhfNdqcbqDG4jNViLEamC5CuCM2DS4nloCr9z/c4yqMEeNl/ErDC6N/4bKDLOEHV3yGlzybXWLyiswmKNXAZ rsa-key-20210520-0
-                - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCHknhTuT5v69MLcUhPWAuBDWMtlDjbJoenvXXzgJkJvtHnAJLrF8MJOuYrVbVbCvAmrj+MQWFGpv41YQxnbA/JGjHxktLZ8tWjrFgN4OPyg+AdO+Xv7vMlydL4dgj+y+Qq/TEBfMz2c31SBwMGo5YgQQjjOxXkn6EcGuardPKfe9Z/c6jMpA76nJGLF7+IM2iRIL+Z+J8954xvQ4bC/3cD/eRRbTtME6o4nuPVz51jS0B3qwH1o2UvS/z3q7RvlEyaDhfNdqcbqDG4jNViLEamC5CuCM2DS4nloCr9z/c4yqMEeNl/ErDC6N/4bKDLOEHV3yGlzybXWLyiswmKNXAZ rsa-key-20210520-1
-                - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCHknhTuT5v69MLcUhPWAuBDWMtlDjbJoenvXXzgJkJvtHnAJLrF8MJOuYrVbVbCvAmrj+MQWFGpv41YQxnbA/JGjHxktLZ8tWjrFgN4OPyg+AdO+Xv7vMlydL4dgj+y+Qq/TEBfMz2c31SBwMGo5YgQQjjOxXkn6EcGuardPKfe9Z/c6jMpA76nJGLF7+IM2iRIL+Z+J8954xvQ4bC/3cD/eRRbTtME6o4nuPVz51jS0B3qwH1o2UvS/z3q7RvlEyaDhfNdqcbqDG4jNViLEamC5CuCM2DS4nloCr9z/c4yqMEeNl/ErDC6N/4bKDLOEHV3yGlzybXWLyiswmKNXAZ rsa-key-20210520-2
+                - <key>
+                - <key>
+                - <key>         
         state: present
