@@ -57,3 +57,27 @@ roles_path    = /etc/ansible/roles
 - путь к файлу;
 - установка пакета с помощью apt.
 
+В роли adduser_sshkey_sudoers возможно использование Ansible Vault, именно поэтому в этой роли используется отдельный файл с переменными.
+То есть файл по пути adduser_sshkey_sudoers/vars/main.yml
+Дополнив информацией данный файл нужно создать отдельный файл, который бы хранил пароль от Vault, допустим здесь:
+echo "password" > /etc/ansible/.ansible_pass.txt
+
+После чего нужно сделать его файлом по умолчанию для Vault:
+
+ansible-playbook play.yml --vault-password-file /etc/ansible/.ansible_pass.txt
+
+Теперь зашифровка файла выглядит таким образом:
+
+sudo ansible-vault encrypt /etc/ansible/roles/adduser_sshkey_sudoers/vars/main.yml --vault-password-file /etc/ansible/.ansible_pass.txt
+
+Для просмотра этого файл без шифрования:
+
+sudo ansible-vault view /etc/ansible/roles/adduser_sshkey_sudoers/vars/main.yml - После потребуется ввод пароля интерактивно
+
+Расшифровка файла возможна с помощью команды:
+
+sudo ansible-vault decrypt /etc/ansible/roles/adduser_sshkey_sudoers/vars/main.yml --vault-password-file /etc/ansible/.ansible_pass.txt
+
+Редактирование файла возможна с помощью команды:
+
+sudo ansible-vault edit /etc/ansible/roles/adduser_sshkey_sudoers/vars/main.yml - После потребуется ввод пароля интерактивно
