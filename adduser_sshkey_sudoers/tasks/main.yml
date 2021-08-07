@@ -1,0 +1,43 @@
+---
+# tasks file for adduser_sshkey_sudoers
+- name: Add users
+  user:
+          name: "{{ item }}"
+          state: "{{ adduser_sshkey_sudoers.state }}"
+  with_items:
+          - "{{ adduser_sshkey_sudoers.username.name }}"
+
+- name: Create dir .ssh/
+  file:
+          path: "/home/{{ item }}/.ssh"
+          state: directory
+  with_items:
+          - "{{ adduser_sshkey_sudoers.username.name }}"
+
+- name: Copy ssh-key in .ssh/authrozied_keys
+  copy:
+          content: "{{ item.key }}"
+          dest: "/home/{{ item.name }}/.ssh/authrozied_keys"
+  with_items:
+          - { key: "{{ adduser_sshkey_sudoers.username.key[0] }}", name: "{{ adduser_sshkey_sudoers.username.name[0] }}" }
+          - { key: "{{ adduser_sshkey_sudoers.username.key[1] }}", name: "{{ adduser_sshkey_sudoers.username.name[1] }}" }
+          - { key: "{{ adduser_sshkey_sudoers.username.key[2] }}", name: "{{ adduser_sshkey_sudoers.username.name[2] }}" }
+
+- name: Chown and chmod directory .ssh/
+  file:
+          path: "/home/{{ item.path }}/.ssh"
+          owner: "{{ item.owner }}"
+          group: "{{ item.group }}" 
+          mode: '744'
+  loop:
+          - { path: "{{ adduser_sshkey_sudoers.username.name[0] }}", owner: "{{ adduser_sshkey_sudoers.username.name[0] }}", group: "{{ adduser_sshkey_sudoers.username.name[0] }}" }
+          - { path: "{{ adduser_sshkey_sudoers.username.name[1] }}", owner: "{{ adduser_sshkey_sudoers.username.name[1] }}", group: "{{ adduser_sshkey_sudoers.username.name[1] }}" }
+          - { path: "{{ adduser_sshkey_sudoers.username.name[2] }}", owner: "{{ adduser_sshkey_sudoers.username.name[2] }}", group: "{{ adduser_sshkey_sudoers.username.name[2] }}" }
+
+- name: Change sudoers
+  lineinfile:
+          path: /etc/sudoers
+          insertafter: '^%sudo'
+          line: "%{{ item }} ALL=(ALL) NOPASSWD:ALL"
+  with_items:
+          - "{{ adduser_sshkey_sudoers.username.name }}"
