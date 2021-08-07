@@ -34,15 +34,4 @@ zabbix_agent_install_url_deb: https://repo.zabbix.com/zabbix/4.4/debian/pool/mai
 zabbix_agent_install_file_deb: /tmp/zabbix-release_4.4-1+buster_all.deb
 # Название пакета
 zabbix_agent_install_agent: zabbix-agent
-#
-adduser_sshkey_sudoers:
-        username:
-                name: 
-                - koptev # этот пользователь относится к регистру 0
-                - user2 # этот пользователь относится к регистру 1
-                - user3 # этот пользователь относится к регистру 2
-                key: 
-                - <key> # Этот ключ относится к регистру 0
-                - <key> # Этот ключ относится к регистру 1
-                - <key> # Этот ключ относится к регистру 2
-        state: present
+

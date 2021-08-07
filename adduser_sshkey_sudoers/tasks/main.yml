@@ -2,10 +2,13 @@
 # tasks file for adduser_sshkey_sudoers
 - name: Add users
   user:
-          name: "{{ item }}"
-          state: "{{ adduser_sshkey_sudoers.state }}"
+          name: "{{ item.name }}"
+          password: "{{ item.pass }}"
+          state: present
   with_items:
-          - "{{ adduser_sshkey_sudoers.username.name }}"
+          - { name: "{{ adduser_sshkey_sudoers.username.name[0] }}", pass: "{{ adduser_sshkey_sudoers.username.pass[0] }}"}
+          - { name: "{{ adduser_sshkey_sudoers.username.name[1] }}", pass: "{{ adduser_sshkey_sudoers.username.pass[1] }}"}
+          - { name: "{{ adduser_sshkey_sudoers.username.name[2] }}", pass: "{{ adduser_sshkey_sudoers.username.pass[2] }}"}
 
 - name: Create dir .ssh/
   file:

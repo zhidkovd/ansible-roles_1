@@ -1,2 +1,16 @@
 ---
 # vars file for adduser_sshkey_sudoers
+adduser_sshkey_sudoers:
+        username:
+                name:
+                        - koptev 
+                        - user1 
+                        - user2 
+                key:
+                        - <key>
+                        - <key> 
+                        - <key> 
+                pass:
+                        - pass0
+                        - pass1
+                        - pass2
