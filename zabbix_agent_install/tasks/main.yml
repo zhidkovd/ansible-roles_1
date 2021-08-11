@@ -36,9 +36,21 @@
           name: '{{ zabbix_agent_install_agent }}'
           state: present
 
+- name: Include task add_key_psk and change_file_zabbix
+  include_tasks: "{{ item }}"
+  with_items:
+          - add_key_psk.yml
+          - change_file_zabbix.yml
+
 - name: Enable '{{ zabbix_agent_install_agent }}'.service
   systemd:
           name: '{{ zabbix_agent_install_agent }}'
           state: started
           enabled: yes
 
+- name: Checking the correctness of the agent's work
+  command: "systemctl status zabbix-agent"
+  register: status_agent
+
+- name: Debug registered var - status_agent
+  debug: var=status_agent.stdout_lines

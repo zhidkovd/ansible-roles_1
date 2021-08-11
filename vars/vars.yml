@@ -34,4 +34,6 @@ zabbix_agent_install_url_deb: https://repo.zabbix.com/zabbix/4.4/debian/pool/mai
 zabbix_agent_install_file_deb: /tmp/zabbix-release_4.4-1+buster_all.deb
 # Название пакета
 zabbix_agent_install_agent: zabbix-agent
-
+zabbix_agent_install:
+        add_key_psk:
+                key: <key> 

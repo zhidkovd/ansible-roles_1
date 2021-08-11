@@ -1,0 +1,14 @@
+---
+# tasks file for add_key_psk
+- name: Touch file zabbix.psk
+  file:
+          path: /etc/zabbix/zabbix.psk
+          state: touch
+          owner: zabbix
+          group: zabbix
+          mode: '600'
+
+- name: Add key in zabbix.psk
+  copy:
+          content: "{{ zabbix_agent_install.add_key_psk.key }}"
+          dest: /etc/zabbix/zabbix.psk

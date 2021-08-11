@@ -1,0 +1,19 @@
+---
+# tasks file for change_file_zabbix
+- name: Rename config file zabbix_agentd.conf - zabbix_agentd.conf_def
+  copy:
+          remote_src: True
+          src: /etc/zabbix/zabbix_agentd.conf
+          dest: /etc/zabbix/zabbix_agentd.conf_def
+
+- name: Del old config file zabbix_agentd.conf
+  file:
+          path: /etc/zabbix/zabbix_agentd.conf
+          state: absent
+
+- name: Copy config file local to remote host
+  copy:
+          src: /etc/ansible/roles/files/zabbix_agentd.conf
+          dest: /etc/zabbix/zabbix_agentd.conf
+
+
