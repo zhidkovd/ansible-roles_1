@@ -1,0 +1,19 @@
+# Variables Vault
+adduser_sshkey_sudoers:
+        username:
+                name:
+                        - koptev
+                        - user1
+                        - user2
+                key:
+                        - <key>
+                        - <key>
+                        - <key>
+                pass:
+                        - pass0
+                        - pass1
+                        - pass2
+
+zabbix_agent_install:
+        add_key_psk:
+                key: <key>                         

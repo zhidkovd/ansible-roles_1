@@ -4,6 +4,7 @@
   become: yes
   vars_files:
           "./vars/vars.yml"
+          "./vars/privvars.yml"
   roles:
           - aptpkg
           - ssh_change_config
@@ -11,11 +12,5 @@
           - clear_journalctl_cron
           - fail2ban_sshd
           - zabbix_agent_install
-          - add_scripts_cron
-- name: Job role adduser_sshkey_sudoers, use file vars vault
-  hosts: client
-  become: yes
-  vars_files:
-          "./adduser_sshkey_sudoers/vars/main.yml"
-  roles:
           - adduser_sshkey_sudoers
+          - add_scripts_cron
